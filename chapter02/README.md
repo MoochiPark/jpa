@@ -316,4 +316,180 @@ public class JpaMain {
 
   `EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpabook");`
 
-  
+  이렇게 하면 META-INF/persistence.xml에서 이름이 `jpabook`인 영속성 유닛<sup>persistence-unit</sup>을 찾아서 **엔티티 매니저 팩토리**를 생성한다. 이때 persistence.xml의 설정 정보를 읽어서 JPA를 동작시키키 위한 기반 객체를 만들고 JPA 구현체에 따라서는 데이터베이스 커넥션 풀도 생성하므로 **엔티티 매니저 팩토리를 생성하는 비용은 아주 크다**. 따라서 **엔티티 매니저 팩토리는 애플리케이션 전체에서 딱 한 번만 생성하고 공유해서 사용해야 한다.**
+
+  엔티티 매니저 팩토리를 만들었으니 이제 엔티티 매니저를 생성하자.
+
+- **엔티티 매니저 생성**
+
+  `EntityManager em = emf.createEntityManager();`
+
+  엔티티 매니저 팩토리에서 엔티티 매니저를 생성한다. **JPA의 기능 대부분은 이 엔티티 매니저가 제공한다.** 대표적으로 **엔티티 매니저를 사용해서 엔티티를 데이터베이스에 등록/수정/삭제/조회할 수 있다.** 엔티티 매니저는 내부에 데이터소스<sup>데이터베이스 커넥션</sup>를 유지하면서 데이터베이스와 통신한다. 따라서 애플리케이션 개발자는 **엔티티 매니저를 가상의 데이터베이스로 생각할 수 있다.** 
+  **참고로 엔티티 매니저는 데이터베이스 커넥션과 밀접한 관계가 있으므로 스레드간에 공유하거나 재사용하면 안된다.** 
+
+- **종료**
+
+  마지막으로 사용이 끝난 엔티티 매니저는 다음처럼 반드시 종료해야 한다.
+
+  `em.close(); // 엔티티 매니저 종료`
+
+  애플리케이션을 종료할 때 엔티티 매니저 팩토리도 다음처럼 종료해야 한다.
+
+  `emf.close() // 엔티티 매니저 팩토리 종료`
+
+
+
+### 2.6.2 트랜잭션 관리
+
+JPA를 사용하면 **항상 트랜잭션 안에서 데이터를 변경해야 한다.** 트랜잭션 없이 데이터를 변경하면 예외가 발생한다.
+트랜잭션을 시작하려면 엔티티 매니저<sup>em</sup>에서 트랜잭션 API를 받아와야 한다.
+
+> *예제 2.9 트랜잭션 코드 부분*
+
+```java
+    // [트랜잭션] - 획득
+    EntityTransaction tx = em.getTransaction();
+    try {
+      tx.begin();     // [트랜잭션] - 시작
+      save(em, new Member("id1", "대원", 27));      // 비즈니스 로직 실행
+      tx.commit();    // [트랜잭션] - 커밋'
+    } catch (Exception e) {
+      tx.rollback();  // [트랜잭션] - 롤백
+```
+
+트랜잭션 API를 사용해 비즈니스 로직이 정상 동작하면 트랜잭션을 커밋<sup>commit</sup>하고 예외가 발생하면 롤백<sup>rollback</sup>한다.
+
+
+
+### 2.6.3 비즈니스 로직
+
+비즈니스 로직은 단순하다. 회원 엔티티를 하나 생성해서 생성한 다음 엔티티 매니저를 통해 데이터베이스에 CRUD한다.
+
+> *CRUD 메서드 코드*
+
+```java
+  private static void save(final EntityManager em, final Member member) {
+    em.persist(member);
+  }
+
+  private static Member find(final EntityManager em, final String id) {
+    return em.find(Member.class, id);
+  }
+
+  private static List<Member> findList(final EntityManager em, final String query) {
+    return em.createQuery(query, Member.class).getResultList();
+  }
+
+  private static void update(final EntityManager em, final String id, final Integer age) {
+    Member member1 = em.find(Member.class, id);
+    member1.setAge(age);
+  }
+
+  private static void delete(final EntityManager em, final String id) {
+    Member member = em.find(Member.class, id);
+    if (member != null) em.remove(member);
+  }
+```
+
+비즈니스 로직을 보면 등록, 수정, 삭제, 조회 작업이 엔티티 매니저를 통해 수행되는 것을 알 수 있다. 엔티티 매니저는 객체를 저장하는 가상의 데이터베이스처럼 보인다. 등록, 수정, 삭제 코드를 분석해보자.
+
+- **등록**
+
+  ```java
+  private static void save(final EntityManager em, final Member member) {
+    em.persist(member);
+  }
+  ...
+  save(em, new Member("id1", "대원", 27));
+  ```
+
+  엔티티를 저장하려면 엔티티 매니저의 persist() 메서드에 저장할 엔티티를 넘겨주면 된다. 
+  JPA는 회원 엔티티의 매핑 정보<sup>어노테이션</sup>를 분석해서 다음과 같은 SQL을 만들어 데이터베이스에 저장한다.
+
+  `INSERT INTO MEMBER (ID, NAME, AGE) VALUES ('id1', '대원', 27)`
+
+
+
+- **수정**
+
+  ```java
+  private static void update(final EntityManager em, final String id, final Integer age) {
+    Member member1 = em.find(Member.class, id);
+    member1.setAge(age);
+  }
+  ```
+
+  수정 부분을 보면 엔티티를 수정한 후에 em.update() 같은 메서드를 호출해야할 것 같지만 단순히 엔티티의 값만 변경했다.
+  JPA는 어떤 엔티티가 변경되었는지 추적하는 기능을 갖추고 있다. 따라서 `member.setAge(age)` 처럼 엔티티의 값만 변경하면 다음과 같은 UPDATE SQL을 생성해서 데이터베이스에 값을 변경한다. 사실 em.update() 같은 메서드도 없다.
+
+  ```sql
+  UPDATE MEMBER
+    SET AHE=25, NAME='대원'
+  WHERE ID='id1'
+  ```
+
+
+
+- **삭제**
+
+  `em.remove(member);`
+
+  엔티티를 삭제하려면 엔티티 매니저의 remove() 메서드에 삭제하려는 엔티티를 넘겨준다.
+  JPA는 다음 DELETE SQL을 실행해서 실행한다.
+
+  `DELETE FROM MEMBER WHERE ID = 'id1'`
+
+
+
+- **한 건 조회**
+
+  `Member findMember = em.find(Member.class, id);`
+
+  find() 메서드는 조회할 엔티티 타입과 @Id로 테이블의 기본 키와 매핑한 식별자 값으로 엔티티 하나를 조회하는 가장 단순한 조회 메서드다. 이 메서드를 호출하면 다음 SELECT SQL을 생성해서 데이터베이스에  결과를 조회한다.
+  그리고 그 조회한 결과 값으로 엔티티를 생성해서 반환한다.
+
+  `SELECT * FROM MEMBER WHERE ID='id1'`
+
+
+
+### 2.6.4 JPQL
+
+하나 이상의 회원 목록을 조회하는 다음 코드를 자세히 살펴보자.
+
+```java
+private static List<Member> findList(final EntityManager em, final String query) {
+  return em.createQuery(query, Member.class).getResultList();
+}
+...
+findList(em, "select m from Member m");
+```
+
+JPA를 사용하면 애플리케이션 개발자는 엔티티 객체를 중심으로 개발하고 데이터베이스에 대한 처리는 JPA에 맡겨야 한다.
+바로 앞에서 살펴본 등록, 수정, 삭제, 한 건 조회 예를 보면 SQL을 전혀 사용하지 않았다. 문제는 검색 쿼리다. JPA는 엔티티 객체를 중심으로 개발하므로 검색을 할 때도 테이블이 아닌 엔티티 객체를 대상으로 검색해야 한다.
+그런데 테이블이 아닌 엔티티 객체를 대상으로 검색하려면 데이터베이스의 모든 데이터를 애플리케이션으로 불러와서 엔티티 객체로 변경한 다음 검색해야 하는데, 이는 사실상 불가능하다. 애플리케이션이 필요한 데이터만 데이터베이스에서 불러오려면 결국 검색 조건이 포함된 SQL을 사용해야 한다. JPA는 JPQL<sup>Java Persistence Query Language</sup>이라는 쿼리 언어로 이런 문제를 해결한다.
+
+JPA는 SQL을 추상화한 JPQL이라는 객체지향 쿼리 언어를 제공한다. JPQL은 SQL과 문법이 거의 유사해서 SELECT, FROM, WHERE, GROUP BY, HAVING, JOIN 등을 사용할 수 있다. 둘의 가장 큰 차이점은 다음과 같다.
+
+- JPQL은 **엔티티 객체**를 대상으로 쿼리한다. 쉽게 이야기해서 클래스와 필드를 대상으로 쿼리한다.
+- SQL은 **데이터베이스 테이블**을 대상으로 쿼리한다.
+
+방금 본 목록 조회 예제에서 `select m from Member m`이 바로 JPQL 이다. 여기서 from Member는 회원 엔티티 객체를 말하는 것이지 MEMBER 테이블이 아니다. **JPQL은 데이터베이스 테이블을 전혀 알지 못한다.**
+
+JPQL을 사용하려면 먼저 em.createQuery(JPQL, 반환 타입) 메서드를 실행해서 쿼리 객체를 생성한 후 쿼리 객체의 getResultList() 메서드를 호출하면 된다.
+
+JPA는 JPQL을 분석해서 다음과 같은 적절한 SQL을 만들어 데이터베이스에서 데이터를 조회한다.
+
+`SELECT M.ID, M.NAME, M.AGE FROM MEMBER M`
+
+자세한 내용은 10장에서 알아보자.
+
+
+
+> JPQL은 대소문자를 명확하게 구분하지만 SQL은 관례상 대소문자를 구분하지 않고 사용하는 경우가 많다.
+
+
+
+## 2.7 정리
+
+JPA를 사용하기 위한 개발 환경을 설정하고, JPA를 사용해서 객체 하나를 테이블에 등록/수정/삭제/조회하는 간단한 애플리케이션을 만들어보았다. JPA가 반복적인 JDBC API와 결과 값 매핑을 처리해준 덕분에 코드량이 상당히 많이 줄어든 것은 물론이고 심지어 SQL도 작성할 필요가 없었다. 하지만 코드량을 줄이고 SQL을 자동 생성하는 것은 JPA가 제공하는 전체 기능 중 일부에 불과하다. 다음 장을 통해 JPA의 핵심 기능인 영속성 관리에 대해 알아보자.
+
