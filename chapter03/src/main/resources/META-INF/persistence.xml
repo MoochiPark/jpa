@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" version="2.1">
+    <persistence-unit name="jpabook" >
+        <class>io.wisoft.daewon.Member</class>
+        <properties>
+            <!-- 필수 속성 -->
+            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+            <property name="javax.persistence.jdbc.user" value="voipmttw"/>
+            <property name="javax.persistence.jdbc.password" value="9U_pMlo8JwC-4kkYy83YFip30jEhS1Xi"/>
+            <property name="javax.persistence.jdbc.url"
+                      value="jdbc:postgresql://satao.db.elephantsql.com:5432/voipmttw"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgresPlusDialect"/>
+
+            <!-- 옵션 -->
+<!--            <property name="packagesToScan" value="io.wisoft.daewon.jpa.start"/>-->
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.use_sql_comments" value="true"/>
+            <property name="hibernate.id.new_generator_mappings" value="true"/>
+        </properties>
+    </persistence-unit>
+</persistence>
