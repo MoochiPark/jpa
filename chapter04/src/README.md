@@ -129,7 +129,7 @@ Order order = em.find(Order.class, orderId);
 Member  member = em.find(Member.class, order.getMemberId()); // 외래 키로 다시 조회
 ```
 
-
+
 
 객체는 참조를 사용해서 연관관계를 조회할 수 있다. 따라서 다음처럼 참조를 사용하는 것이 객체지향적인 방법이다.
 
