@@ -19,7 +19,10 @@
 
   #### 영속성 관리
 
-  
+- ### [Chapter 04]( https://github.com/MoochiPark/jpa/tree/master/chapter04 )
+
+  #### 엔티티 매핑
+
   
 ## *Made by*
 
