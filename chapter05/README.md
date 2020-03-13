@@ -43,8 +43,8 @@
 
 
 - **객체 연관관계**
-  - 회원 객체는 Member.team 필드로 팀 객체와 연관관계를 맺는다.
-  - 회원 객체와 팀 객체는 **단방향 관계**다. 회원은 Member.team 필드를 통해서 팀을 알 수 있지만
+  - 회원 객체는 `Member.team` 필드로 팀 객체와 연관관계를 맺는다.
+  - 회원 객체와 팀 객체는 **단방향 관계**다. 회원은 `Member.team` 필드를 통해서 팀을 알 수 있지만
     반대로 팀은 회원을 알 수 없다.
     member → team의 조회는 `member.getTeam()`으로 가능하지만 반대 방향으로 접근하는 필드는 없다.
 
@@ -417,8 +417,6 @@ Hibernate:
             member_id='member1'
 ```
 
-
-
 ### 5.2.5 연관된 엔티티 삭제
 
 연관된 엔티티를 삭제하려면 기존에 있던 연관관계를 먼저 제거하고 삭제해야 한다. 그렇지 않으면 외래 키 제약조건으로 인해
@@ -576,7 +574,7 @@ team1.getMembers().add(member2); // 무시(연관관계의 주인이 아님)
 
 // Member.team은 연관관계의 주인이므로 엔티티 매니저는 이곳에 입력된 값을 사용해서 외래 키를 관리한다.
 member1.setTeam(team1); // 연관관계 설정(연관관계의 주인)
-member1.setTeam(team1); // 연관관계 설정(연관관계의 주인)
+member2.setTeam(team1); // 연관관계 설정(연관관계의 주인)
 ```
 
 
@@ -594,8 +592,6 @@ member1.setTeam(team1); // 연관관계 설정(연관관계의 주인)
 ![image](https://user-images.githubusercontent.com/43429667/76495031-6cf46d80-6479-11ea-80dd-57dbafa70d73.png)
 
 연관관계의 주인이 아닌 Team.members에만 값을 저장했으므로 team_id에 null 값이 입력되어 있는 것을 볼 수 있다.
-
-
 
 
 
