@@ -275,7 +275,7 @@ private List members; // 제네릭이 없으면 타입 정보를 알 수 없다.
 
 > *회원과 팀을 저장하는 코드*
 
-<script src="https://gist.github.com/2dc845f91e8cbe30ea354a70cd85620a.js">
+<script src="https://gist.github.com/2dc845f91e8cbe30ea354a70cd85620a.js"/>
 </script>
 
 중요한 부분을 분석해보자.
@@ -348,7 +348,7 @@ Hibernate:
 
   > *JPQL 조인 탐색*
 
-  <script src="https://gist.github.com/573d576b6b34cf4607213add69c5daae.js">
+  <script src="https://gist.github.com/573d576b6b34cf4607213add69c5daae.js"/>
     
   </script>
 
@@ -378,7 +378,7 @@ Hibernate:
 
 > *연관관계 수정 코드*
 
-<script src="https://gist.github.com/197b1581204f08579c3fe4e6309c88e4.js">
+<script src="https://gist.github.com/197b1581204f08579c3fe4e6309c88e4.js"/>
 
 ```sql
 Hibernate: 
@@ -403,7 +403,7 @@ Hibernate:
 
 > *연관관계 제거 코드*
 
-<script src="https://gist.github.com/a0d1cdf9005d1edec120771481e1c365.js">
+<script src="https://gist.github.com/a0d1cdf9005d1edec120771481e1c365.js"/>
 
 이 때 실행되는 SQL은 다음과 같다.
 
@@ -463,7 +463,7 @@ em.remove(team);
 
 > *매핑한 팀 엔티티*
 
-<script src="https://gist.github.com/756113393b4bb11e392d69500929bf52.js">
+<script src="https://gist.github.com/756113393b4bb11e392d69500929bf52.js"/>
 
 팀과 회원은 일대다 관계다. 따라서 members를 추가해주었다. 
 그리고 일대다 관계를 매핑하기 위해 @OneToMany 매핑 정보를 사용했다. mappedBy 속성은 양방향 매핑일 때 사용하는데
@@ -477,7 +477,7 @@ em.remove(team);
 
 > *일대다 방향으로 객체 그래프 탐색*
 
-<script src="https://gist.github.com/9cc988fe9f10f6371cb77be5b7a099ff.js">
+<script src="https://gist.github.com/9cc988fe9f10f6371cb77be5b7a099ff.js"/>
 
 **실행 결과**
 
@@ -557,7 +557,7 @@ mappedBy의 값은 연관관계의 주인을 주면 된다. 여기서 "team"은 
 
 > *양방향 연관관계 저장*
 
-<script src="https://gist.github.com/8931077ebedc3ddabf2d4e7c0e17414f.js">
+<script src="https://gist.github.com/8931077ebedc3ddabf2d4e7c0e17414f.js"/>
 
 참고로 이 코드는 **단방향 연관관계에서 살펴본 회원과 팀을 저장하는 코드와 완전히 같다.**
 데이터베이스에서 회원 테이블을 조회 해보자.
@@ -585,7 +585,7 @@ member2.setTeam(team1); // 연관관계 설정(연관관계의 주인)
 
 주인이 아닌 곳에만 값을 설정하면 어떻게 되는지 알아보자.
 
-<script src="https://gist.github.com/d2f3b77b7d63d50e6c59ea095b6bd74f.js">
+<script src="https://gist.github.com/d2f3b77b7d63d50e6c59ea095b6bd74f.js"/>
 
 회원1, 회원2를 저장하고 팀의 컬렉션에 담은 후에 팀을 저장했다. 데이터베이스에서 회원 테이블을 조회해보자.
 
@@ -604,7 +604,7 @@ ORM은 객체와 관계형 데이터베이스 둘 다 중요한데, 데이터베
 
 > *순수한 객체 연관관계*
 
-<script src="https://gist.github.com/4056b9f00719e042812b908a657f3a5f.js">
+<script src="https://gist.github.com/4056b9f00719e042812b908a657f3a5f.js"/>
   
 </script>
 
@@ -623,7 +623,7 @@ Member.team에만 연관관계를 설정하고 반대 방향은 연관관계를 
 
 > *양방향 모두 관계를 설정*
 
-<script src="https://gist.github.com/72c56ec89f79bfd8c4a6ec089d9a8488.js">
+<script src="https://gist.github.com/72c56ec89f79bfd8c4a6ec089d9a8488.js"/>
 
 **실행 결과**
 
@@ -637,7 +637,7 @@ members.size = 2
 
 > *JPA로 코드 완성*
 
-<script src="https://gist.github.com/6229b9a5f163ae75cbff332df868ce00.js">
+<script src="https://gist.github.com/6229b9a5f163ae75cbff332df868ce00.js"/>
 
 양쪽에 연관관계를 설정했다. 따라서 순수한 객체 상태에서도 동작하고, 테이블의 외래 키도 정상 입력된다.
 물론 외래 키의 값은 연관관계의 주인인 Member.team 값을 사용한다.
@@ -658,7 +658,7 @@ members.size = 2
 
 따라서 양방향 관계에선 두 코드를 하나인 것처럼 사용하는 것이 안전하다.
 
-<script src="https://gist.github.com/e629602c9ab15f95f2a1ed49ef4d318b.js">
+<script src="https://gist.github.com/e629602c9ab15f95f2a1ed49ef4d318b.js"/>
 
 이렇게 리팩토링하면 실수도 줄어들고 좀 더 그럴듯하게 양방향 연관관계를 설정할 수 있다.
 
@@ -686,7 +686,7 @@ Member findMember = teamA.getMember(); // member1이 여전히 조회된다.
 
 teamB로 변경할 때 teamA → member1 관계를 제거하지 않았다. 따라서 기존 팀과 회원의 연관관계를 삭제하는 코드를 추가해야 한다.
 
-<script src="https://gist.github.com/7b3d6dc1d01764fce87aba666ef793c3.js">
+<script src="https://gist.github.com/7b3d6dc1d01764fce87aba666ef793c3.js"/>
 
 이 코드는 서로 다른 단방향 연관관계 2개를 양방향인 것처럼 보이게 하기위해 얼마나 많은 고민과 수고가 필요한지 보여준다.
 
