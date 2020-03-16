@@ -23,6 +23,14 @@
 
   #### 엔티티 매핑
 
+- ### [Chapter 05]( https://github.com/MoochiPark/jpa/tree/master/chapter05 )
+
+  #### 연관관계 매핑 기초
+  
+- ### [Chapter 06]( https://github.com/MoochiPark/jpa/tree/master/chapter06 )
+
+  #### 다양한 연관관계 매핑
+  
   
 ## *Made by*
 
