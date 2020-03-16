@@ -682,7 +682,7 @@ Member findMember = teamA.getMember(); // member1이 여전히 조회된다.
 
 > *2(삭제되지 않은 관계)*
 
-![image-20200312164206763](/Users/daewon/Library/Application Support/typora-user-images/image-20200312164206763.png)
+![image](https://user-images.githubusercontent.com/43429667/76737070-76e4dc00-67ab-11ea-8545-40c93f23dd12.png)
 
 teamB로 변경할 때 teamA → member1 관계를 제거하지 않았다. 따라서 기존 팀과 회원의 연관관계를 삭제하는 코드를 추가해야 한다.
 
