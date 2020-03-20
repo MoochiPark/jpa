@@ -30,6 +30,11 @@
 - ### [Chapter 06]( https://github.com/MoochiPark/jpa/tree/master/chapter06 )
 
   #### 다양한 연관관계 매핑
+    
+- ### [Chapter 07]( https://github.com/MoochiPark/jpa/tree/master/chapter07 )
+
+  #### 고급 매핑
+  
   
   
 ## *Made by*
