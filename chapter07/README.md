@@ -352,7 +352,7 @@ JPA는 복합 키를 지원하기 위해 두 가지 방법을 제공한다.
 
 <script src="https://gist.github.com/1aeea0251e28361b0f92bba6d9e4c669.js"/>
 
-em.persist(parent)를 호춣하면 영속성 컨텍스트에서 엔티티를 등록하기 직전에 내부에서 Parent.id1, id2를 사용해서
+em.persist(parent)를 호출하면 영속성 컨텍스트에서 엔티티를 등록하기 직전에 내부에서 Parent.id1, id2를 사용해서
 식별자 클래스인 ParentId를 생성하고 영속성 컨텍스트의 키로 사용한다.
 
 복합 키로 조회해보자.
@@ -494,7 +494,7 @@ Child 엔티티의 parent를 보면 @Id로 기본 키를 매핑하면서 @ManyTo
 
 
 
-## @EmbededId와 식별 관계
+### @EmbededId와 식별 관계
 
 @EmbededId로 식별 관계를 구성할 때는 @MapsId를 사용해야 한다. 
 
