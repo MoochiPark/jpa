@@ -36,7 +36,7 @@ model.entity.item이라는 패키지에 상품과 숭품의 자식 클래스들�
 
 > *부모 엔티티 Item*<sup>상품</sup>
 
-<script src="https://gist.github.com/9abd39603412a1e5bd2f583a4e80fb75.js"/>
+<script src="https://gist.github.com/9abd39603412a1e5bd2f583a4e80fb75.js"></script>
 
 - 상속 관계를 매핑하기 위해 부모 클래스인 Item에 @Inheritance 애노테이션을 사용하고 strategy 속성에 InheritanceType.SINGLE_TABLE을 선택해서 단일 테이블 전략을 선택했다.
 - 단일 테이블 전략은 구분 컬럼을 필수로 사용해야 한다. @DiscriminatorColumn을 사용하고 name 속성에 DTYPE이라는 구분 컬럼으로 사용할 이름을 주었다. (기본 값이 DTYPE이므로 생략이 가능하다.)
@@ -45,15 +45,15 @@ model.entity.item이라는 패키지에 상품과 숭품의 자식 클래스들�
 
 > *자식 엔티티 Album*
 
-<script src="https://gist.github.com/e48d3db7120688b49256ca12a7c9fdf8.js"/>
+<script src="https://gist.github.com/e48d3db7120688b49256ca12a7c9fdf8.js"></script>
 
 > *자식 엔티티 Book*
 
-<script src="https://gist.github.com/423457a9f0ca2396c07c36f85ca1fa73.js"/>
+<script src="https://gist.github.com/423457a9f0ca2396c07c36f85ca1fa73.js"></script>
 
 > *자식 엔티티 Movie*
 
-<script src="https://gist.github.com/601e88c2b52421b0261e340b373c552c.js"/>
+<script src="https://gist.github.com/601e88c2b52421b0261e340b373c552c.js"></script>
 
 자식 테이블은 @DiscriminatorValue를 사용하고 그값으로 구분 컬럼에 입력될 값을 정하면 된다.
 
@@ -65,7 +65,7 @@ model.entity.item이라는 패키지에 상품과 숭품의 자식 클래스들�
 
 > *기본 부모 엔티티*
 
-<script src="https://gist.github.com/ede9f273efaf61a7c9d858576ba2a309.js"/>
+<script src="https://gist.github.com/ede9f273efaf61a7c9d858576ba2a309.js"></script>
 
 > *매핑 정보를 상속*
 
