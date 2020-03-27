@@ -55,9 +55,9 @@ ORM에서의 상속 관계 매핑은 객체의 상속 구조와 데이터베이�
 
 > *조인 전략 매핑 코드*
 
-<script src="https://gist.github.com/3d05ad5c2159600649c4bfb5dd3f294e.js"/>
+<script src="https://gist.github.com/3d05ad5c2159600649c4bfb5dd3f294e.js"></script>
 
-<script src="https://gist.github.com/bc16f95894c7e6041565828c87821f37.js"/>
+<script src="https://gist.github.com/bc16f95894c7e6041565828c87821f37.js"></script>
 
 매핑 정보를 분석해보자.
 
@@ -72,7 +72,7 @@ ORM에서의 상속 관계 매핑은 객체의 상속 구조와 데이터베이�
 기본 값으로 자식 테이블은 부모 테이블의 ID 컬럼명을 그대로 사용하는데, 만약 자식 테이블의 기본 키 컬럼명을 변경하고 싶으면
 @PrimaryKeyJoinColumn을 사용하면 된다.
 
-<script src="https://gist.github.com/d55bff911b1cde6710ed08d443f0a9cf.js"/>
+<script src="https://gist.github.com/d55bff911b1cde6710ed08d443f0a9cf.js"></script>
 
 BOOK 테이블의 item_id 기본 키 컬럼명을 book_id로 변경했다.
 
@@ -107,9 +107,9 @@ Book 엔티티를 저장하면 ITEM 테이블의 AUTHOR, ISBN 컬럼을 제외�
 
 > *단일 테이블 전략 매핑*
 
-<script src="https://gist.github.com/ccaa73e246a7504591c188ae5c7f365a.js"/>
+<script src="https://gist.github.com/ccaa73e246a7504591c188ae5c7f365a.js"></script>
 
-<script src="https://gist.github.com/29f826813d947edd502a91f415a1fbb5.js"/>
+<script src="https://gist.github.com/29f826813d947edd502a91f415a1fbb5.js"></script>
 
 단일 테이블 전략은 테이블 하나에 모든 것을 통합하므로 구분 컬럼을 필수로 사용해야 한다. 단일 테이블 전략의 장단점은
 하나의 테이블을 사용하는 특징과 관련이 있다.
@@ -139,9 +139,9 @@ Book 엔티티를 저장하면 ITEM 테이블의 AUTHOR, ISBN 컬럼을 제외�
 
 > *구현 클래스마다 테이블 전략 매핑*
 
-<script src="https://gist.github.com/11f10b383c251993401c88d366993c4b.js"/>
+<script src="https://gist.github.com/11f10b383c251993401c88d366993c4b.js"></script>
 
-<script src="https://gist.github.com/4d38aebe3b4e58f6bda12d9e4ed73721.js"/>
+<script src="https://gist.github.com/4d38aebe3b4e58f6bda12d9e4ed73721.js"></script>
 
 구현 클래스마다 테이블 전략은 자식 엔티티마다 테이블을 만든다. 일반적으로 추천하지 않는 전략이다.
 
@@ -182,11 +182,11 @@ Book 엔티티를 저장하면 ITEM 테이블의 AUTHOR, ISBN 컬럼을 제외�
 회원과 판매자는 서로 관계가 없는 테이블과 엔티티다. 테이블은 그대로 두고 객체 모델의 공통 속성을 부모 클래스로 모으고
 객체 상속 관계로 만들어보자.
 
-<script src="https://gist.github.com/bffe8fa2c916009a56a45295ddeb4790.js"/>
+<script src="https://gist.github.com/bffe8fa2c916009a56a45295ddeb4790.js"></script>
 
-<script src="https://gist.github.com/4af03b2d3cc7f0963c6f24e8eac4d723.js"/>
+<script src="https://gist.github.com/4af03b2d3cc7f0963c6f24e8eac4d723.js"></script>
 
-<script src="https://gist.github.com/d578e463254466071e4ff8bc20d0c6c5.js"/>
+<script src="https://gist.github.com/d578e463254466071e4ff8bc20d0c6c5.js"></script>
 
 여기서 BaseEntity는 테이블과 매핑할 필요가 없고 자식 엔티티에게 공통으로 사용되는 매핑 정보만 제공하면 된다.
 따라서 @MappedSuperclass를 사용했다. 부모로부터 물려받은 매핑 정보를 재정의하려면 @AttributeOverride나 Overrides를 사용하고, 연관관계를 재정의하려면 @AssociationOverride, Overrides를 사용한다.
@@ -334,11 +334,11 @@ JPA는 복합 키를 지원하기 위해 두 가지 방법을 제공한다.
 
 따라서 복합 키를 매핑하기 위해 식별자 클래스를 별도로 만들어야 한다.
 
-<script src="https://gist.github.com/cee8c5b527bb669195052cb612823dff.js"/>
+<script src="https://gist.github.com/cee8c5b527bb669195052cb612823dff.js"></script>
 
 먼저 각각의 기본 키 컬럼을 @Id로 매핑했다. 그리고 @IdClass를 사용해서 ParentId 클래스를 식별자 클래스로 지정했다.
 
-<script src="https://gist.github.com/1a0b219f395deb0a2aed337e72b60190.js"/>
+<script src="https://gist.github.com/1a0b219f395deb0a2aed337e72b60190.js"></script>
 
 @IdClass를 사용할 때 식별자 클래스는 다음 조건을 만족해야 한다.
 
@@ -350,18 +350,18 @@ JPA는 복합 키를 지원하기 위해 두 가지 방법을 제공한다.
 
 실제 어떻게 사용하는지 알아보자. 먼저 복합 키를 사용하는 엔티티를 저장해보자.
 
-<script src="https://gist.github.com/1aeea0251e28361b0f92bba6d9e4c669.js"/>
+<script src="https://gist.github.com/1aeea0251e28361b0f92bba6d9e4c669.js"></script>
 
 em.persist(parent)를 호출하면 영속성 컨텍스트에서 엔티티를 등록하기 직전에 내부에서 Parent.id1, id2를 사용해서
 식별자 클래스인 ParentId를 생성하고 영속성 컨텍스트의 키로 사용한다.
 
 복합 키로 조회해보자.
 
-<script src="https://gist.github.com/d7155c41eaf960ab6311cf2b09572caa.js"/>
+<script src="https://gist.github.com/d7155c41eaf960ab6311cf2b09572caa.js"></script>
 
 식별자 클래스인 ParentId를 사용해서 엔티티를 조회한다. 이제 자식 클래스를 추가해보자.
 
-<script src="https://gist.github.com/736daed7b198f9df45e5c89e6b38c476.js"/>
+<script src="https://gist.github.com/736daed7b198f9df45e5c89e6b38c476.js"></script>
 
 부모 테이블의 기본 키 컬럼이 복합 키이므로 자식 테이블의 외래 키도 복합 키다. 따라서 외래 키 매핑 시 여러 컬럼을 매핑해야 하므로 @JoinColumns를 사용하고 각각의 외래 키 컬럼을 @JoinColumn으로 매핑한다.
 
@@ -373,13 +373,13 @@ em.persist(parent)를 호출하면 영속성 컨텍스트에서 엔티티를 등
 
 좀 더 객체지향적인 방법인 @EmbededId를 알아보자.
 
-<script src="https://gist.github.com/60e53d6eb1cccf51ed932b8d3958840f.js"/>
+<script src="https://gist.github.com/60e53d6eb1cccf51ed932b8d3958840f.js"></script>
 
 Parent 엔티티에서 식별자 클래스를 직접 사용하고 @Embeded 애노테이션을 적어주면 된다.
 
 > *식별자 클래스*
 
-<script src="https://gist.github.com/16973ce8bc95558bc00d861dbf6f6f37.js"/>
+<script src="https://gist.github.com/16973ce8bc95558bc00d861dbf6f6f37.js"></script>
 
 @IdClass와는 다르게 @EmbededId를 적용한 식별자 클래스는 식별자 클래스에 기본 키를 직접 매핑한다.
 
@@ -393,11 +393,11 @@ Parent 엔티티에서 식별자 클래스를 직접 사용하고 @Embeded 애�
 
 @EmbededId를 사용한 코드로 엔티티를 저장해보자.
 
-<script src="https://gist.github.com/181c85722d5e66143706534d74a740ab.js"/>
+<script src="https://gist.github.com/181c85722d5e66143706534d74a740ab.js"></script>
 
 parentId를 직접 생성해서 사용하였다. 조회도 해보자.
 
-<script src="https://gist.github.com/c9be31bb50e284fb75af9ec4607b000b.js"/>
+<script src="https://gist.github.com/c9be31bb50e284fb75af9ec4607b000b.js"></script>
 
 조회 코드도 식별자 클래스 parentId를 직접 사용한다.
 
@@ -462,23 +462,23 @@ em.createQuery("select p.id1, p.id2 from Parent p");       // @IdClass
 
 > *부모*
 
-<script src="https://gist.github.com/7a502349e7f4be7e3b9343a11d9619ba.js"/>
+<script src="https://gist.github.com/7a502349e7f4be7e3b9343a11d9619ba.js"></script>
 
 > *자식*
 
-<script src="https://gist.github.com/df0e7ae0e2625d9b0e7e68743b0fb6a3.js"/>
+<script src="https://gist.github.com/df0e7ae0e2625d9b0e7e68743b0fb6a3.js"></script>
 
 > *자식 ID*
 
-<script src="https://gist.github.com/fa441c88eff1a1dc70dcb2b6caf9d6b2.js"/>
+<script src="https://gist.github.com/fa441c88eff1a1dc70dcb2b6caf9d6b2.js"></script>
 
 > *손자*
 
-<script src="https://gist.github.com/104fae3a4b1a9ecea568dfc108a1bb35.js"/>
+<script src="https://gist.github.com/104fae3a4b1a9ecea568dfc108a1bb35.js"></script>
 
 > *손자 ID*
 
-<script src="https://gist.github.com/39d1c825e4302272d46d9e952a586c33.js"/>
+<script src="https://gist.github.com/39d1c825e4302272d46d9e952a586c33.js"></script>
 
 식별 관계는 기본 키와 외래 키를 같이 매핑해야 한다. 
 따라서 식별자 매핑인 @Id와 연관관계 매핑인 ManyToOne을 같이 사용하면 된다.
@@ -500,23 +500,23 @@ Child 엔티티의 parent를 보면 @Id로 기본 키를 매핑하면서 @ManyTo
 
 > *부모*
 
-<script src="https://gist.github.com/568b43b7747878d2e6b9588828938ce0.js"/>
+<script src="https://gist.github.com/568b43b7747878d2e6b9588828938ce0.js"></script>
 
 > *자식*
 
-<script src="https://gist.github.com/1895ad6b6b105d7bff4cd07fba9c5c98.js"/>
+<script src="https://gist.github.com/1895ad6b6b105d7bff4cd07fba9c5c98.js"></script>
 
 > *자식 ID*
 
-<script src="https://gist.github.com/65b9e275d2eca33c872433c29809075d.js"/>
+<script src="https://gist.github.com/65b9e275d2eca33c872433c29809075d.js"></script>
 
 > *손자*
 
-<script src="https://gist.github.com/8cfd067f1244db1a0fc167f8b75c3548.js"/>
+<script src="https://gist.github.com/8cfd067f1244db1a0fc167f8b75c3548.js"></script>
 
 > *손자 ID*
 
-<script src="https://gist.github.com/7bbb927b6a8c752d4ca1c686d1a6de55.js"/>
+<script src="https://gist.github.com/7bbb927b6a8c752d4ca1c686d1a6de55.js"></script>
 
 @EmbededId는 식별 관계로 사용할 연관관계의 속성에 @MapsId를 사용하면 된다. 
 @MapsId는 외래 키와 매핑한 연관관계를 기본 키에도 매핑하겠다는 뜻이다. 
@@ -532,11 +532,11 @@ Child 엔티티의 parent를 보면 @Id로 기본 키를 매핑하면서 @ManyTo
 
 이렇게 복합 키를 사용하지 않는 비식별 관계로 만든 테이블을 매핑해보자.
 
-<script src="https://gist.github.com/eff96ee4c92ed0aef91bbcd60fb109ce.js"/>
+<script src="https://gist.github.com/eff96ee4c92ed0aef91bbcd60fb109ce.js"></script>
 
-<script src="https://gist.github.com/195bbd901d03e00a5303e9e1af6e417e.js"/>
+<script src="https://gist.github.com/195bbd901d03e00a5303e9e1af6e417e.js"></script>
 
-<script src="https://gist.github.com/ed98af5047c6f1b76a6b7e48a71c10fa.js"/>
+<script src="https://gist.github.com/ed98af5047c6f1b76a6b7e48a71c10fa.js"></script>
 
 식별 관계의 복합 키를 사용한 코드와 비교하면 매핑도 쉽고 코드도 단순하다. 
 그리고 복합 키가 없으므로 복합 키 클래스를 만들지 않아도 된다.
@@ -554,18 +554,18 @@ Child 엔티티의 parent를 보면 @Id로 기본 키를 매핑하면서 @ManyTo
 
 > *부모*
 
-<script src="https://gist.github.com/2b74f9a1e29f26bf4bd7501134009575.js"/>
+<script src="https://gist.github.com/2b74f9a1e29f26bf4bd7501134009575.js"></script>
 
 >*자식*
 
-<script src="https://gist.github.com/733ad477ed902cc689ac4478a941bb25.js"/>
+<script src="https://gist.github.com/733ad477ed902cc689ac4478a941bb25.js"></script>
 
 BoardDetail처럼 식별자가 단순히 컬럼 하나면 @MapsId를 사용하고 속성 값은 비워두면 된다.
 이때 @MapsId는 @Id를 사용해서 식별자로 지정한 BoardDetail.boardId와 매핑된다.
 
 일대일 식별 관계를 사용하는 코드를 보자.
 
-<script src="https://gist.github.com/f340750ce21ecfce7c7c8a36cf73a5a4.js"/>
+<script src="https://gist.github.com/f340750ce21ecfce7c7c8a36cf73a5a4.js"></script>
 
 ### 7.3.6 식별, 비식별 관계의 장단점
 
@@ -679,9 +679,9 @@ ORM 신규 프로젝트 진행시 추천하는 방법은 될 수 있으면 **비
 
 > *일대일 조인 테이블 매핑*
 
-<script src="https://gist.github.com/f01bed9fa587ebfb4080398350a105d3.js"/>
+<script src="https://gist.github.com/f01bed9fa587ebfb4080398350a105d3.js"></script>
 
-<script src="https://gist.github.com/ae1560066404035262992d8dcef403db.js"/>
+<script src="https://gist.github.com/ae1560066404035262992d8dcef403db.js"></script>
 
 부모 엔티티를 보면 @JoinColumn 대신에 @JoinTable을 사용했다.
 
@@ -719,9 +719,9 @@ public class Child {
 
 > *일대다 단방향 조인 테이블 매핑*
 
-<script src="https://gist.github.com/da175f8a4bc70cae4459b36f20d9d315.js"/>
+<script src="https://gist.github.com/da175f8a4bc70cae4459b36f20d9d315.js"></script>
 
-<script src="https://gist.github.com/a655686a9e8865bc365bfa901b8ad618.js"/>
+<script src="https://gist.github.com/a655686a9e8865bc365bfa901b8ad618.js"></script>
 
 
 
@@ -732,9 +732,9 @@ public class Child {
 
 > *다대일 양방향 조인 테이블*
 
-<script src="https://gist.github.com/7189bdf05a89368fc4fa727bf16b328e.js"/>
+<script src="https://gist.github.com/7189bdf05a89368fc4fa727bf16b328e.js"></script>
 
-<script src="https://gist.github.com/4ffbbe64c9c31caa4639e7bb8ccdbdff.js"/>
+<script src="https://gist.github.com/4ffbbe64c9c31caa4639e7bb8ccdbdff.js"></script>
 
 
 
@@ -750,9 +750,9 @@ public class Child {
 
 > *다대다 조인 테이블 매핑*
 
-<script src="https://gist.github.com/601db90c0e4e8638744e2ca7271acb00.js"/>
+<script src="https://gist.github.com/601db90c0e4e8638744e2ca7271acb00.js"></script>
 
-<script src="https://gist.github.com/1d73f6696ae10aa9716f53596d60ab55.js"/>
+<script src="https://gist.github.com/1d73f6696ae10aa9716f53596d60ab55.js"></script>
 
 > *조인 테이블에 컬럼을 추가하면 @JoinTable 전략을 사용할 수 없다. 대신에 새로운 엔티티를 만들어서 조인 테이블과*
 > *매핑해야 한다.*
@@ -769,7 +769,7 @@ public class Child {
 
 > *하나의 엔티티에 여러 테이블 매핑*
 
-<script src="https://gist.github.com/11776ce50bcace5918bffd9cf0e8cfeb.js"/>
+<script src="https://gist.github.com/11776ce50bcace5918bffd9cf0e8cfeb.js"></script>
 
 Board 엔티티는 @Table을 사용해서 BOARD 테이블과 매핑했다. 
 그리고 @SecondaryTable을 사용해서 BOARD_DETAIL 테이블을 추가로 매핑했다.
