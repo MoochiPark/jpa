@@ -41,6 +41,6 @@
   
 <br></br>
 
-## *Made by*
+## *Contributor*
 
  - *Daewon Park* *[<daewon@wisoft.io>]*
