@@ -35,7 +35,9 @@
 
   #### 고급 매핑
   
-  
+- ### [Chapter 08]( https://github.com/MoochiPark/jpa/tree/master/chapter08 )
+
+  #### 프록시와 연관관계 
   
 ## *Made by*
 
