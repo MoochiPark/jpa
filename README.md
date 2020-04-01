@@ -39,6 +39,8 @@
 
   #### 프록시와 연관관계 
   
-## *Made by*
+<br></br>
+
+## *Contributor*
 
  - *Daewon Park* *[<daewon@wisoft.io>]*
