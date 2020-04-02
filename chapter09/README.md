@@ -559,3 +559,5 @@ addressHistory.remove(new Address("신도시", "새로운 주소", "123-456"));
 
 
 
+[실전 예제 - 값 타입 매핑](https://github.com/MoochiPark/jpa/tree/master/chapter09/src)
+
