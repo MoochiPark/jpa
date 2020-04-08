@@ -43,6 +43,10 @@
 
   #### 값 타입
   
+- ### [Chapter 10]( https://github.com/MoochiPark/jpa/tree/master/chapter10 )
+
+  #### 객체지향 쿼리 언어
+  
 <br></br>
 
 ## *Contributor*
