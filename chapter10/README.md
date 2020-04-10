@@ -88,7 +88,7 @@ List resultList = query.getResultList();
 여기선 조회 대상이 String 타입과 Integer 타입이므로 조회 대상 타입이 명확하지 않다.
 Query 객체는 SELECT 절의 조회 대상이 둘 이상이면 Object[]를 반환하고 하나면 Object를 반환한다.
 
-일반적으로 타입을 변환할 필요가 없는 TypeQuery를 사용하는 것이 더 편리하다.
+일반적으로 타입을 변환할 필요가 없는 TypedQuery를 사용하는 것이 더 편리하다.
 
 
 
